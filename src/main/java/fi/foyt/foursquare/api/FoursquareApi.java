@@ -616,21 +616,16 @@ public class FoursquareApi {
    *
    * @see <a href="https://developer.foursquare.com/docs/venues/explore.html" target="_blank">https://developer.foursquare.com/docs/venues/explore.html</a>
    *
-   * @param ll latitude and longitude of the location in question, so response can include distance.
-   * @param llAcc accuracy of latitude and longitude, in meters.
-   * @param alt altitude of the user's location, in meters.
-   * @param altAcc accuracy of the user's altitude, in meters.
-   * @param radius radius to search within, in meters.
    * @param section one of food, drinks, coffee, shops, or arts. Choosing one of these limits results to venues with categories matching these terms.
    * @param query a search term to be applied against tips, category, tips, etc. at a venue.
    * @param limit number of results to return, up to 50.
-   * @param basis if present and set to friends or me, limits results to only places where friends have visited or user has visited, respectively.
+   * @param polygon latitude,longitude points delimited by a semicolon
    * @return Recommended entity wrapped in Result object
    * @throws FoursquareApiException when something unexpected happens
    */
-  public Result<Recommended> venuesExplore(String ll, Double llAcc, Double alt, Double altAcc, Integer radius, String section, String query, Integer limit, String basis) throws FoursquareApiException {
+  public Result<Recommended> venuesExplore(String section, String query, Integer limit, String polygon) throws FoursquareApiException {
     try {
-      ApiRequestResponse response = doApiRequest(Method.GET, "venues/explore", isAuthenticated(), "ll", ll, "llAcc", llAcc, "alt", alt, "altAcc", altAcc, "radius", radius, "section", section, "query", query, "limit", limit, "basis", basis);
+      ApiRequestResponse response = doApiRequest(Method.GET, "venues/explore", isAuthenticated(), "section", section, "query", query, "limit", limit, "polygon", polygon);
       Recommended result = null;
 
       if (response.getMeta().getCode() == 200) {
