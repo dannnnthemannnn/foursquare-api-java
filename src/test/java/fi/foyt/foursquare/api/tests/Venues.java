@@ -220,33 +220,6 @@ public class Venues {
   }
   
   @Test
-  public final void testVenuesExplore() throws FoursquareApiException {
-    FoursquareApi foursquareApi = TestUtils.getAnonymousFoursquareApi();
-    Result<Recommended> result = foursquareApi.venuesExplore("40.7,-74", null, null, null, null, null, null, null, null);
-    
-    assertEquals(new Integer(200), result.getMeta().getCode());
-    
-    assertEquals(new Long(30), result.getResult().getKeywords().getCount());
-    assertEquals("Park", result.getResult().getKeywords().getItems()[0].getDisplayName());
-    assertEquals("Park", result.getResult().getKeywords().getItems()[0].getKeyword());
-    assertEquals("recommended", result.getResult().getGroups()[0].getType());
-    assertEquals("Recommended Places", result.getResult().getGroups()[0].getName());
-    assertEquals(new Long(1), result.getResult().getGroups()[0].getItems()[0].getReasons().getCount());
-    assertEquals("general", result.getResult().getGroups()[0].getItems()[0].getReasons().getItems()[0].getType());
-    assertEquals("This place is popular on foursquare.", result.getResult().getGroups()[0].getItems()[0].getReasons().getItems()[0].getMessage());
-    assertEquals("4a9ff488f964a520b73d20e3", result.getResult().getGroups()[0].getItems()[0].getVenue().getId());
-    assertEquals("4abe660770c603bb50838eb4", result.getResult().getGroups()[0].getItems()[0].getTips()[0].getId());
-  }
-  
-  @Test
-  public final void testVenuesExploreWarning() throws FoursquareApiException {
-    FoursquareApi foursquareApi = TestUtils.getAnonymousFoursquareApi();
-    Result<Recommended> result = foursquareApi.venuesExplore("10.7,-74", null, null, null, null, null, null, null, null);
-    assertEquals(new Integer(200), result.getMeta().getCode());
-    assertEquals("There aren't a lot of results near you. Try expanding the search area by tapping the settings button on the top left of the screen.", result.getResult().getWarning().getText());
-  }
-  
-  @Test
   public final void testVenuesHereNow() throws FoursquareApiException {
     FoursquareApi foursquareApi = TestUtils.getAnonymousFoursquareApi();
     Result<CheckinGroup> result = foursquareApi.venuesHereNow("5104", null, null, null);
