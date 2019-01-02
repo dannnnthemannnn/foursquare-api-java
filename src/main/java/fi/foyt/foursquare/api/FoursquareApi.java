@@ -629,10 +629,9 @@ public class FoursquareApi {
       Recommended result = null;
 
       if (response.getMeta().getCode() == 200) {
-        KeywordGroup keywords = (KeywordGroup) JSONFieldParser.parseEntity(KeywordGroup.class, response.getResponse().getJSONObject("keywords"), this.skipNonExistingFields);
         RecommendationGroup[] groups = (RecommendationGroup[]) JSONFieldParser.parseEntities(RecommendationGroup.class, response.getResponse().getJSONArray("groups"), this.skipNonExistingFields);
         Warning warning = response.getResponse().has("warning") ? (Warning) JSONFieldParser.parseEntity(Warning.class, response.getResponse().getJSONObject("warning"), this.skipNonExistingFields) : null;
-        result = new Recommended(keywords, groups, warning);
+        result = new Recommended(groups, warning);
       }
 
       return new Result<Recommended>(response.getMeta(), result);

@@ -16,25 +16,14 @@ public class Recommended implements FoursquareEntity {
   /**
    * Constructor
    * 
-   * @param keywords keyword group
    * @param groups recommendation groups
    * @param warning warning
    */
-  public Recommended(KeywordGroup keywords, RecommendationGroup[] groups, Warning warning) {
-    this.keywords = keywords;
+  public Recommended(RecommendationGroup[] groups, Warning warning) {
     this.groups = groups;
     this.warning = warning;
   }
 
-  /**
-   * Returns keywords
-   * 
-   * @return keywords
-   */
-  public KeywordGroup getKeywords() {
-    return keywords;
-  }
-  
   /**
    * Returns recommendation groups
    * 
@@ -52,8 +41,7 @@ public class Recommended implements FoursquareEntity {
   public Warning getWarning() {
     return warning;
   }
-  
-  private KeywordGroup keywords;
+
   private RecommendationGroup[] groups;
   private Warning warning;
 }
