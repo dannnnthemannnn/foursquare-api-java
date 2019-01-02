@@ -1647,6 +1647,7 @@ public class FoursquareApi {
    */
   private ApiRequestResponse doApiRequest(Method method, String path, boolean auth, Object... params) throws JSONException, FoursquareApiException {
     String url = getApiRequestUrl(path, auth, params);
+    System.out.println(url);
     Response response = ioHandler.fetchData(url, method);
 
     if (useCallback) {
