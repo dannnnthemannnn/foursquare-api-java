@@ -178,6 +178,7 @@ public class CompleteVenue extends CompactVenue {
   private String timeZone;
   
   // TODO
+  /*
   private String reasons;
   private String flags;
   private String roles;
@@ -186,6 +187,7 @@ public class CompleteVenue extends CompactVenue {
   private String phrases;
   private String attributes;
   private String storeId;
+  */
 
   @Override
   public String toString() {
@@ -221,6 +223,7 @@ public class CompleteVenue extends CompactVenue {
             ",\nlike=" + like +
             ", dislike=" + dislike +
             ", timeZone='" + timeZone + '\'' +
+            /*
             ", reasons='" + reasons + '\'' +
             ", flags='" + flags + '\'' +
             ", roles='" + roles + '\'' +
@@ -229,6 +232,7 @@ public class CompleteVenue extends CompactVenue {
             ", phrases='" + phrases + '\'' +
             ",\nattributes='" + attributes + '\'' +
             ",\nstoreId='" + storeId + '\'' +
+            */
             '}';
   }
 }
